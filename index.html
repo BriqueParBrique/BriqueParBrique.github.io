@@ -135,7 +135,7 @@
     }
 
     .section-header p {
-      color: #777;
+      color: #636363;
       margin-top: 0.5rem;
       font-size: 1rem;
     }
@@ -182,9 +182,12 @@
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
-    .brique-card--link:hover {
+    .brique-card--link:hover,
+    .brique-card--link:focus {
       transform: translateY(-4px);
       box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+      outline: 2px solid #3b7dd8;
+      outline-offset: 2px;
     }
 
     .brique-stack {
@@ -235,7 +238,7 @@
     .brique-level-label {
       font-size: 0.75rem;
       font-weight: 600;
-      color: #999;
+      color: #707070;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 0.25rem;
@@ -254,7 +257,7 @@
       font-size: 0.8rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      color: #bbb;
+      color: #767676;
     }
 
     /* --- About cards --- */
@@ -384,8 +387,29 @@
       transition: background 0.2s;
     }
 
-    .contrib-link:hover {
+    .contrib-link:hover,
+    .contrib-link:focus {
       background: #c88a2e;
+      outline: 2px solid #c88a2e;
+      outline-offset: 2px;
+    }
+
+    /* --- Skip nav --- */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      background: #3b7dd8;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      z-index: 100;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 0 0 8px 0;
+    }
+
+    .skip-link:focus {
+      top: 0;
     }
 
     /* --- Footer --- */
@@ -449,15 +473,17 @@
 
 <body>
 
-  <div class="hero">
+  <a class="skip-link" href="#briques">Aller au contenu principal</a>
+
+  <header class="hero" role="banner">
     <div class="hero-content">
       <img src="BriqueParBrique-logo.png" alt="BriqueParBrique logo">
       <h1>BriqueParBrique</h1>
       <p class="tagline">L'essentiel du développement, une étape à la fois.</p>
     </div>
-  </div>
+  </header>
 
-  <div class="intro-section">
+  <section class="intro-section" aria-label="Introduction">
     <div class="intro-card">
       <p>
         Bienvenue sur <strong>BriqueParBrique</strong>, l'endroit dédié aux débutants qui souhaitent
@@ -469,12 +495,14 @@
         simples, digestes et immédiatement actionnables.
       </p>
     </div>
-  </div>
+  </section>
 
   <!-- Briques -->
+  <main id="briques">
+  <section aria-label="Les Briques">
   <div class="section-header">
     <h2>
-      <span class="icon icon-briques">&#9881;</span>
+      <span class="icon icon-briques" aria-hidden="true">&#9881;</span>
       Les Briques
     </h2>
     <p>Des mini-onboarding pour apprendre pas à pas. Bientôt disponibles !</p>
@@ -483,11 +511,11 @@
   <div class="briques-grid">
     {% for brique in site.data.briques %}
     {% if brique.link %}
-    <a href="{{ brique.link }}" class="brique-card brique-card--link">
+    <a href="{{ brique.link }}" class="brique-card brique-card--link" aria-label="{{ brique.name }} – Niveau {{ brique.level }}">
     {% else %}
-    <div class="brique-card">
+    <div class="brique-card" role="article" aria-label="{{ brique.name }} – Niveau {{ brique.level }}">
     {% endif %}
-      <div class="brique-stack">
+      <div class="brique-stack" aria-hidden="true">
         <div class="brique-shape level-1 brique-{{ brique.color }}{% if brique.level >= 1 %} active{% endif %}"></div>
         <div class="brique-shape level-2 brique-{{ brique.color }}{% if brique.level >= 2 %} active{% endif %}"></div>
         <div class="brique-shape level-3 brique-{{ brique.color }}{% if brique.level >= 3 %} active{% endif %}"></div>
@@ -502,19 +530,20 @@
     {% endif %}
     {% endfor %}
   </div>
+  </section>
 
   <!-- About -->
-  <main class="about-grid">
+  <section class="about-grid" aria-label="À propos">
     <div class="card">
       <h3>
-        <span class="icon icon-concept">&#9881;</span>
+        <span class="icon icon-concept" aria-hidden="true">&#9881;</span>
         Le Concept
       </h3>
       <p>
         Chaque parcours est conçu comme une "mini-onboarding".
         Pas de tutoriels de 10 heures, mais des chemins balisés pour :
       </p>
-      <ul>
+      <ul role="list">
         <li>Comprendre les bases fondamentales.</li>
         <li>Installer et configurer vos outils sans douleur.</li>
         <li>Réaliser un premier projet concret rapidement.</li>
@@ -523,7 +552,7 @@
 
     <div class="card">
       <h3>
-        <span class="icon icon-why">&#10067;</span>
+        <span class="icon icon-why" aria-hidden="true">&#10067;</span>
         Pourquoi "BriqueParBrique" ?
       </h3>
       <p>
@@ -532,12 +561,13 @@
         et petit à petit, on bâtit des bases solides.
       </p>
     </div>
-  </main>
+  </section>
 
   <!-- Contribuer -->
+  <section aria-label="Contribuer">
   <div class="section-header">
     <h2>
-      <span class="icon icon-contrib">&#9998;</span>
+      <span class="icon icon-contrib" aria-hidden="true">&#9998;</span>
       Contribuer
     </h2>
   </div>
@@ -555,11 +585,13 @@
         </p>
         <a class="contrib-link" href="https://github.com/BriqueParBrique">Contribuer sur GitHub</a>
       </div>
-      <div class="contrib-icon">&#9878;</div>
+      <div class="contrib-icon" aria-hidden="true">&#9878;</div>
     </div>
   </div>
+  </section>
+  </main>
 
-  <footer>
+  <footer role="contentinfo">
     <p>BriqueParBrique &mdash; <a href="https://github.com/BriqueParBrique">GitHub</a></p>
   </footer>
 
