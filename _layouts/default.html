@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} - BriqueParBrique</title>
+  <link rel="icon" type="image/png" href="/assets/images/logo.png">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+<body>
+
+  <a class="skip-link" href="#briques">Aller au contenu principal</a>
+
+  {{ content }}
+
+  <footer role="contentinfo">
+    <p>BriqueParBrique &mdash; <a href="https://github.com/BriqueParBrique">GitHub</a></p>
+  </footer>
+
+  {% if page.scripts %}
+  {% for script in page.scripts %}
+  <script src="/assets/js/{{ script }}.js"></script>
+  {% endfor %}
+  {% endif %}
+
+</body>
+
+</html>

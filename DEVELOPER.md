@@ -30,12 +30,22 @@ Le site est accessible sur [http://localhost:4000](http://localhost:4000).
 ├── _config.yml          # Configuration Jekyll
 ├── _data/
 │   └── briques.yml      # Liste des briques (données)
-├── index.html           # Page principale (template Liquid)
+├── _layouts/
+│   └── default.html     # Layout de base (head, skip-link, footer, CSS/JS)
+├── _includes/
+│   └── brique-card.html # Partial partagé pour les cartes de briques
+├── assets/
+│   ├── css/
+│   │   └── main.css     # Feuille de styles principale
+│   ├── js/
+│   │   └── briques-filter.js  # Recherche et filtre par niveau
+│   └── images/
+│       └── logo.png     # Logo du site
+├── index.html           # Page d'accueil (utilise le layout default)
+├── briques.html         # Page listing des briques (utilise le layout default)
 ├── Dockerfile           # Image Docker pour le dev local
 ├── Gemfile              # Dépendances Ruby
-├── justfile             # Commandes de développement
-├── BriqueParBrique-logo.png
-└── BriqueParBrique-visuel.png
+└── justfile             # Commandes de développement
 ```
 
 ## Ajouter ou modifier une brique

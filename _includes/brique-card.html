@@ -1,0 +1,18 @@
+{% if brique.link %}
+<a href="{{ brique.link }}" class="brique-card brique-card--link" {% if include.role %}role="{{ include.role }}"{% endif %} {% if include.data_attrs %}data-name="{{ brique.name }}" data-level="{{ brique.level }}"{% endif %} aria-label="{{ brique.name }} – Niveau {{ brique.level }}">
+{% else %}
+<div class="brique-card" {% if include.role %}role="{{ include.role }}"{% endif %} {% if include.data_attrs %}data-name="{{ brique.name }}" data-level="{{ brique.level }}"{% endif %} aria-label="{{ brique.name }} – Niveau {{ brique.level }}">
+{% endif %}
+  <div class="brique-stack" aria-hidden="true">
+    <div class="brique-shape level-1 brique-{{ brique.color }}{% if brique.level >= 1 %} active{% endif %}"></div>
+    <div class="brique-shape level-2 brique-{{ brique.color }}{% if brique.level >= 2 %} active{% endif %}"></div>
+    <div class="brique-shape level-3 brique-{{ brique.color }}{% if brique.level >= 3 %} active{% endif %}"></div>
+  </div>
+  <span class="brique-level-label">Niveau {{ brique.level }}</span>
+  <span class="brique-name">{{ brique.name }}</span>
+  <span class="brique-status">{{ brique.status }}</span>
+{% if brique.link %}
+</a>
+{% else %}
+</div>
+{% endif %}
