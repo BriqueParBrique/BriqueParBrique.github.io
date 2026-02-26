@@ -11,7 +11,7 @@
   # link: /python/
 
 - name: SQL
-  color: blue
+  color: orange
   level: 1
   status: Bientôt disponible
   # link: /sql/
