@@ -610,6 +610,18 @@ footer a:hover {
   text-decoration: underline;
 }
 
+.footer-actions {
+  margin-bottom: 0.5rem;
+}
+
+.footer-actions a {
+  margin: 0 0.25rem;
+}
+
+.footer-actions span {
+  color: rgba(255, 255, 255, 0.4);
+}
+
 /* === Responsive === */
 @media (max-width: 680px) {
   .hero {
