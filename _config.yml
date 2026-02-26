@@ -1,0 +1,13 @@
+title: BriqueParBrique
+description: L'essentiel du développement, une étape à la fois.
+url: https://briqueparbrique.github.io
+
+exclude:
+  - README.md
+  - DEVELOPER.md
+  - CONTRIBUTING.md
+  - Dockerfile
+  - Gemfile
+  - Gemfile.lock
+  - justfile
+  - LICENSE

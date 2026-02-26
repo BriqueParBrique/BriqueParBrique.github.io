@@ -1,0 +1,568 @@
+---
+---
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BriqueParBrique - L'essentiel du développement, une étape à la fois</title>
+  <link rel="icon" type="image/png" href="BriqueParBrique-logo.png">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #333;
+      line-height: 1.7;
+      background: #f5f5f0;
+    }
+
+    /* --- Hero --- */
+    .hero {
+      text-align: center;
+      padding: 5rem 1.5rem 4rem;
+      background: linear-gradient(135deg, #3b7dd8 0%, #2a6bc2 50%, #2a9d8f 100%);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        repeating-linear-gradient(0deg,
+          transparent,
+          transparent 58px,
+          rgba(255, 255, 255, 0.04) 58px,
+          rgba(255, 255, 255, 0.04) 60px),
+        repeating-linear-gradient(90deg,
+          transparent,
+          transparent 58px,
+          rgba(255, 255, 255, 0.04) 58px,
+          rgba(255, 255, 255, 0.04) 60px);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .hero img {
+      width: 110px;
+      height: 110px;
+      margin-bottom: 1.5rem;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 12px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .hero .tagline {
+      font-size: 1.3rem;
+      opacity: 0.92;
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    /* --- Intro --- */
+    .intro-section {
+      max-width: 820px;
+      margin: -2.5rem auto 0;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .intro-card p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .intro-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* --- Section titles --- */
+    .section-header {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 1.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.6rem;
+      color: #2c3e50;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-header h2 .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .section-header p {
+      color: #777;
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .icon-briques {
+      background: #e8f4fd;
+      color: #3b7dd8;
+    }
+
+    .icon-contrib {
+      background: #fef3e2;
+      color: #e09f3e;
+    }
+
+    /* --- Briques grid --- */
+    .briques-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .brique-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 2rem 1.75rem 1.75rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 200px;
+      color: #aaa;
+      font-size: 0.95rem;
+    }
+
+    .brique-card--link {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .brique-card--link:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+    }
+
+    .brique-stack {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 1.25rem;
+    }
+
+    .brique-shape {
+      height: 22px;
+      border-radius: 4px;
+      position: relative;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      opacity: 0.25;
+      transition: opacity 0.3s;
+    }
+
+    .brique-shape.active {
+      opacity: 1;
+    }
+
+    .brique-shape.level-1 {
+      width: 120px;
+    }
+
+    .brique-shape.level-2 {
+      width: 90px;
+    }
+
+    .brique-shape.level-3 {
+      width: 60px;
+    }
+
+    .brique-blue {
+      background: linear-gradient(135deg, #3b7dd8, #5a9be6);
+    }
+
+    .brique-teal {
+      background: linear-gradient(135deg, #2a9d8f, #3dbdad);
+    }
+
+    .brique-orange {
+      background: linear-gradient(135deg, #e09f3e, #f0b95a);
+    }
+
+    .brique-level-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.25rem;
+    }
+
+    .brique-card .brique-name {
+      display: block;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #2c3e50;
+      margin-bottom: 0.25rem;
+    }
+
+    .brique-card .brique-status {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #bbb;
+    }
+
+    /* --- About cards --- */
+    .about-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem 2rem 2.5rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      color: #2c3e50;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .card h3 .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .icon-concept {
+      background: #e8f4fd;
+      color: #3b7dd8;
+    }
+
+    .icon-why {
+      background: #e6f7f4;
+      color: #2a9d8f;
+    }
+
+    .card p {
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .card ul li {
+      padding: 0.6rem 0.9rem;
+      margin-bottom: 0.4rem;
+      background: #f8f9fb;
+      border-left: 3px solid #2a9d8f;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .card ul li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* --- Contribuer --- */
+    .contrib-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+    }
+
+    .contrib-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+      border-left: 5px solid #e09f3e;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .contrib-card .contrib-text {
+      flex: 1;
+    }
+
+    .contrib-card h3 {
+      font-size: 1.2rem;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+    }
+
+    .contrib-card p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .contrib-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contrib-card .contrib-icon {
+      font-size: 3rem;
+      opacity: 0.3;
+      flex-shrink: 0;
+    }
+
+    .contrib-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.6rem 1.4rem;
+      background: #e09f3e;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    .contrib-link:hover {
+      background: #c88a2e;
+    }
+
+    /* --- Footer --- */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      background: #2c3e50;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #7ab8f5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* --- Responsive --- */
+    @media (max-width: 680px) {
+      .hero {
+        padding: 3.5rem 1rem 3rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero .tagline {
+        font-size: 1.1rem;
+      }
+
+      .intro-card {
+        padding: 2rem 1.5rem;
+      }
+
+      .briques-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contrib-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1.5rem;
+      }
+
+      .contrib-card .contrib-icon {
+        order: -1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hero">
+    <div class="hero-content">
+      <img src="BriqueParBrique-logo.png" alt="BriqueParBrique logo">
+      <h1>BriqueParBrique</h1>
+      <p class="tagline">L'essentiel du développement, une étape à la fois.</p>
+    </div>
+  </div>
+
+  <div class="intro-section">
+    <div class="intro-card">
+      <p>
+        Bienvenue sur <strong>BriqueParBrique</strong>, l'endroit dédié aux débutants qui souhaitent
+        s'initier aux nouvelles technologies sans se sentir submergés.
+      </p>
+      <p>
+        L'apprentissage de la programmation ou d'un nouvel outil peut ressembler à une montagne.
+        Notre mission est de décomposer cette montagne en <strong>petites briques de connaissances</strong>
+        simples, digestes et immédiatement actionnables.
+      </p>
+    </div>
+  </div>
+
+  <!-- Briques -->
+  <div class="section-header">
+    <h2>
+      <span class="icon icon-briques">&#9881;</span>
+      Les Briques
+    </h2>
+    <p>Des mini-onboarding pour apprendre pas à pas. Bientôt disponibles !</p>
+  </div>
+
+  <div class="briques-grid">
+    {% for brique in site.data.briques %}
+    {% if brique.link %}
+    <a href="{{ brique.link }}" class="brique-card brique-card--link">
+    {% else %}
+    <div class="brique-card">
+    {% endif %}
+      <div class="brique-stack">
+        <div class="brique-shape level-1 brique-{{ brique.color }}{% if brique.level >= 1 %} active{% endif %}"></div>
+        <div class="brique-shape level-2 brique-{{ brique.color }}{% if brique.level >= 2 %} active{% endif %}"></div>
+        <div class="brique-shape level-3 brique-{{ brique.color }}{% if brique.level >= 3 %} active{% endif %}"></div>
+      </div>
+      <span class="brique-level-label">Niveau {{ brique.level }}</span>
+      <span class="brique-name">{{ brique.name }}</span>
+      <span class="brique-status">{{ brique.status }}</span>
+    {% if brique.link %}
+    </a>
+    {% else %}
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- About -->
+  <main class="about-grid">
+    <div class="card">
+      <h3>
+        <span class="icon icon-concept">&#9881;</span>
+        Le Concept
+      </h3>
+      <p>
+        Chaque parcours est conçu comme une "mini-onboarding".
+        Pas de tutoriels de 10 heures, mais des chemins balisés pour :
+      </p>
+      <ul>
+        <li>Comprendre les bases fondamentales.</li>
+        <li>Installer et configurer vos outils sans douleur.</li>
+        <li>Réaliser un premier projet concret rapidement.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>
+        <span class="icon icon-why">&#10067;</span>
+        Pourquoi "BriqueParBrique" ?
+      </h3>
+      <p>
+        Parce qu'on ne construit pas une application complexe en un jour.
+        On assemble des composants, on comprend des concepts isolés,
+        et petit à petit, on bâtit des bases solides.
+      </p>
+    </div>
+  </main>
+
+  <!-- Contribuer -->
+  <div class="section-header">
+    <h2>
+      <span class="icon icon-contrib">&#9998;</span>
+      Contribuer
+    </h2>
+  </div>
+
+  <div class="contrib-section">
+    <div class="contrib-card">
+      <div class="contrib-text">
+        <h3>Proposez votre brique !</h3>
+        <p>
+          Vous avez une expertise sur un outil, un langage ou un concept ?
+          Partagez-la en contribuant une nouvelle brique d'apprentissage.
+        </p>
+        <p>
+          Chaque contribution aide un nouveau dev à poser sa prochaine brique.
+        </p>
+        <a class="contrib-link" href="https://github.com/BriqueParBrique">Contribuer sur GitHub</a>
+      </div>
+      <div class="contrib-icon">&#9878;</div>
+    </div>
+  </div>
+
+  <footer>
+    <p>BriqueParBrique &mdash; <a href="https://github.com/BriqueParBrique">GitHub</a></p>
+  </footer>
+
+</body>
+
+</html>

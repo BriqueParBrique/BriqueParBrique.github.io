@@ -1,0 +1,17 @@
+- name: SAS
+  color: blue
+  level: 1
+  status: Bientôt disponible
+  # link: /sas/
+
+- name: Python
+  color: teal
+  level: 1
+  status: Bientôt disponible
+  # link: /python/
+
+- name: Just
+  color: orange
+  level: 1
+  status: Bientôt disponible
+  # link: /just/
