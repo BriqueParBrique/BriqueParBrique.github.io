@@ -10,8 +10,8 @@
   status: Bientôt disponible
   # link: /python/
 
-- name: Just
-  color: orange
+- name: SQL
+  color: blue
   level: 1
   status: Bientôt disponible
-  # link: /just/
+  # link: /sql/
