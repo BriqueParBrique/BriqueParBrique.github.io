@@ -576,9 +576,8 @@ body {
 }
 
 .contrib-card .contrib-icon {
-  font-size: 3rem;
-  opacity: 0.3;
   flex-shrink: 0;
+  opacity: 0.4;
 }
 
 .contrib-link {
