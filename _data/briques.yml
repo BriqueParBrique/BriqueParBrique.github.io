@@ -1,17 +1,20 @@
-- name: SAS
-  color: blue
+- name: SQL
+  color: orange
   level: 1
   status: Bientôt disponible
-  # link: /sas/
+  # steps_count: 0
+  # link: /sql
 
 - name: Python
   color: teal
   level: 1
   status: Bientôt disponible
-  # link: /python/
+  # steps_count: 0
+  # link: /python
 
-- name: SQL
-  color: orange
+- name: SAS
+  color: blue
   level: 1
   status: Bientôt disponible
-  # link: /sql/
+  # steps_count: 0
+  # link: /sas

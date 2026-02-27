@@ -11,6 +11,14 @@
   <span class="brique-level-label">Niveau {{ brique.level }}</span>
   <span class="brique-name">{{ brique.name }}</span>
   <span class="brique-status">{{ brique.status }}</span>
+  {% if brique.steps_count > 0 and brique.link %}
+  <div class="brique-progress brique-{{ brique.color }}-fill" data-baseurl="{{ brique.link | remove: '/' | prepend: '/' }}" data-steps="{{ brique.steps_count }}" hidden>
+    <div class="brique-progress-bar">
+      <div class="brique-progress-fill"></div>
+    </div>
+    <span class="brique-progress-text"></span>
+  </div>
+  {% endif %}
 {% if brique.link %}
 </a>
 {% else %}

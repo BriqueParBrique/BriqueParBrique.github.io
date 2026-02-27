@@ -424,6 +424,49 @@ body {
   color: var(--color-brique-status);
 }
 
+/* === Brique progress bar === */
+.brique-progress {
+  width: 100%;
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.brique-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.brique-progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.brique-blue-fill .brique-progress-fill {
+  background: linear-gradient(135deg, #3b7dd8, #5a9be6);
+}
+
+.brique-teal-fill .brique-progress-fill {
+  background: linear-gradient(135deg, #2a9d8f, #3dbdad);
+}
+
+.brique-orange-fill .brique-progress-fill {
+  background: linear-gradient(135deg, #e09f3e, #f0b95a);
+}
+
+.brique-progress-text {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
 /* === About cards === */
 .about-grid {
   max-width: 900px;
