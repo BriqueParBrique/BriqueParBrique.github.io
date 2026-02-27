@@ -16,6 +16,7 @@
       el.querySelector('.brique-progress-fill').style.width = pct + '%';
       el.querySelector('.brique-progress-text').textContent = visited + '/' + steps + ' étapes';
       el.removeAttribute('hidden');
+      el.closest('.brique-card').setAttribute('data-in-progress', 'true');
     } catch (e) {
       // invalid JSON, keep bar hidden
     }

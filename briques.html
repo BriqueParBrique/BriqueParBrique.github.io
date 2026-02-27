@@ -3,8 +3,8 @@ layout: default
 title: Toutes les Briques
 permalink: /briques/
 scripts:
-- briques-filter
 - briques-progress
+- briques-filter
 ---
 
 <header class="page-header" role="banner">
@@ -32,6 +32,13 @@ scripts:
         {% for level in levels %}
         <button class="level-btn" data-level="{{ level }}" aria-pressed="false">{{ level }}</button>
         {% endfor %}
+      </div>
+    </div>
+    <div class="filter-group">
+      <label id="progress-filter-label">Progression</label>
+      <div role="group" aria-labelledby="progress-filter-label">
+        <button class="level-btn active" data-progress="all" aria-pressed="true">Toutes</button>
+        <button class="level-btn" data-progress="in-progress" aria-pressed="false">En cours</button>
       </div>
     </div>
     <span class="results-count" aria-live="polite">

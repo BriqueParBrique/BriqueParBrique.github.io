@@ -1,10 +1,12 @@
 (function () {
   var searchInput = document.getElementById('search');
-  var levelButtons = document.querySelectorAll('.level-btn');
+  var levelButtons = document.querySelectorAll('[data-level]');
+  var progressButtons = document.querySelectorAll('[data-progress]');
   var cards = document.querySelectorAll('.brique-card');
   var countEl = document.getElementById('count');
   var noResults = document.querySelector('.no-results');
   var activeLevel = 'all';
+  var activeProgress = 'all';
 
   function fuzzyMatch(text, query) {
     text = text.toLowerCase();
@@ -35,8 +37,9 @@
 
       var matchesLevel = activeLevel === 'all' || level === activeLevel;
       var matchesSearch = query === '' || fuzzyMatch(name, query);
+      var matchesProgress = activeProgress === 'all' || card.hasAttribute('data-in-progress');
 
-      if (matchesLevel && matchesSearch) {
+      if (matchesLevel && matchesSearch && matchesProgress) {
         card.classList.remove('hidden');
         visible++;
       } else {
@@ -63,6 +66,19 @@
       btn.classList.add('active');
       btn.setAttribute('aria-pressed', 'true');
       activeLevel = btn.getAttribute('data-level');
+      applyFilters();
+    });
+  });
+
+  progressButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      progressButtons.forEach(function (b) {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      activeProgress = btn.getAttribute('data-progress');
       applyFilters();
     });
   });
