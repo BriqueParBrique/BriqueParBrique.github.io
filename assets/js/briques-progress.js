@@ -10,11 +10,12 @@
     try {
       var data = JSON.parse(raw);
       var visited = Array.isArray(data.visited) ? data.visited.length : 0;
-      if (visited === 0) return;
+      var completed = Array.isArray(data.completed) ? data.completed.length : 0;
+      if (visited === 0 && completed === 0) return;
 
-      var pct = Math.min(Math.round((visited / steps) * 100), 100);
+      var pct = Math.min(Math.round((completed / steps) * 100), 100);
       el.querySelector('.brique-progress-fill').style.width = pct + '%';
-      el.querySelector('.brique-progress-text').textContent = visited + '/' + steps + ' étapes';
+      el.querySelector('.brique-progress-text').textContent = completed + '/' + steps + ' étapes';
       el.removeAttribute('hidden');
       el.closest('.brique-card').setAttribute('data-in-progress', 'true');
     } catch (e) {
