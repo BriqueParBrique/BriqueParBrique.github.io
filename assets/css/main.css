@@ -600,6 +600,71 @@ body {
   outline-offset: 2px;
 }
 
+/* === Further section === */
+.icon-further {
+  background: #f0e6ff;
+  color: #7c3aed;
+}
+
+@media (prefers-color-scheme: dark) {
+  .icon-further {
+    background: rgba(124, 58, 237, 0.15);
+  }
+}
+
+.further-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+}
+
+.further-card {
+  display: block;
+  background: var(--color-card);
+  border-radius: 16px;
+  padding: 2.5rem 3rem;
+  box-shadow: 0 4px 16px var(--color-shadow);
+  border-left: 5px solid #7c3aed;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.further-card:hover,
+.further-card:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px var(--color-shadow-hover);
+  outline: none;
+}
+
+.further-card h3 {
+  font-size: 1.2rem;
+  color: var(--color-text-heading);
+  margin-bottom: 0.5rem;
+}
+
+.further-card p {
+  color: var(--color-text-secondary);
+  margin-bottom: 1rem;
+}
+
+.further-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.4rem;
+  background: #7c3aed;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.further-card:hover .further-link,
+.further-card:focus .further-link {
+  background: #6d28d9;
+}
+
 /* === Filters section (briques page) === */
 .filters-section {
   max-width: 900px;
@@ -761,6 +826,10 @@ footer a:hover {
 
   .about-grid {
     grid-template-columns: 1fr;
+  }
+
+  .further-card {
+    padding: 2rem 1.5rem;
   }
 
   .contrib-card {
