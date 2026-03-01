@@ -2,6 +2,9 @@ title: BriqueParBrique
 description: L'essentiel du développement, une étape à la fois.
 url: https://briqueparbrique.github.io
 
+goatcounter:
+  code: briqueparbrique
+
 exclude:
   - README.md
   - DEVELOPER.md

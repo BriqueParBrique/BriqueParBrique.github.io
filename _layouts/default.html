@@ -32,6 +32,11 @@
   {% endfor %}
   {% endif %}
 
+  {% if site.goatcounter.code %}
+  <script data-goatcounter="https://{{ site.goatcounter.code }}.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  {% endif %}
+
 </body>
 
 </html>
