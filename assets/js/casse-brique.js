@@ -1,5 +1,5 @@
 (function () {
-  var logo = document.querySelector('.hero-content img');
+  var logo = document.querySelector('.contrib-icon');
   if (!logo) return;
 
   logo.style.cursor = 'pointer';
