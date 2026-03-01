@@ -74,6 +74,9 @@
     var isRickroll = q === 'konami' || q === 'never' || q === 'rick';
 
     if (isRickroll) {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: 'easter-egg-rickroll', title: 'Rickroll', event: true });
+      }
       showRickroll();
       cards.forEach(function (card) { card.classList.add('hidden'); });
       countEl.textContent = rickrollLines.length;

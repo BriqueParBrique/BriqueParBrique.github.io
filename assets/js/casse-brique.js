@@ -6,6 +6,10 @@
   logo.addEventListener('click', launchGame);
 
   function launchGame() {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: 'easter-egg-casse-brique', title: 'Casse-Brique', event: true });
+    }
+
     var overlay = document.createElement('div');
     overlay.id = 'casse-brique-overlay';
     Object.assign(overlay.style, {
