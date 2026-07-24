@@ -1,9 +1,32 @@
+# Une entrée par brique (technologie + niveau).
+#
+# `color` doit correspondre au `brique.color` du _config.yml du dépôt de la
+# brique, sinon la carte du hub et le site de la brique s'affichent dans deux
+# couleurs différentes.
+#
+# `steps_count` doit correspondre au nombre d'entrées de _data/steps.yml de la
+# brique : c'est le dénominateur de la barre de progression du hub.
+
+- name: SQL
+  color: blue
+  level: 1
+  status: Disponible
+  steps_count: 6
+  link: /sql-fondamentaux-brique-1
+
+- name: SQL
+  color: teal
+  level: 2
+  status: Disponible
+  steps_count: 7
+  link: /sql-fondamentaux-brique-2
+
 - name: SQL
   color: orange
-  level: 1
-  status: Bientôt disponible
-  # steps_count: 0
-  # link: /sql
+  level: 3
+  status: Disponible
+  steps_count: 7
+  link: /sql-fondamentaux-brique-3
 
 - name: Python
   color: teal
