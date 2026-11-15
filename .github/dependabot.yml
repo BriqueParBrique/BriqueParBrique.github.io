@@ -1,0 +1,28 @@
+version: 2
+
+multi-ecosystem-groups:
+  dependencies:
+    schedule:
+      interval: 'weekly'
+    commit-message:
+      prefix: 'build'
+      include: 'scope'
+
+updates:
+  - package-ecosystem: 'bundler'
+    directory: '/'
+    allow:
+      - dependency-type: 'all'
+    patterns:
+      - '*'
+    cooldown:
+      default-days: 5
+    multi-ecosystem-group: 'dependencies'
+
+  - package-ecosystem: 'docker'
+    directory: '/'
+    patterns:
+      - '*'
+    cooldown:
+      default-days: 5
+    multi-ecosystem-group: 'dependencies'
